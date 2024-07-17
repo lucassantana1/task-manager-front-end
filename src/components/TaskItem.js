@@ -1,34 +1,45 @@
-// const TaskItem = ({ task }) => {
-//     return (
-//         <>
-//             <h1>{task.description}</h1>
-//             <p>{task.isCompleted ? "Completa" : "Nao completa"}</p>
-//         </>
-//     );
-// };
+import { useEffect, useState } from "react";
 
-// export default TaskItem;
-import React from "react";
-
-class TaskItem extends React.Component {
-    componentDidMount() {
+const TaskItem = ({ task }) => {
+    useEffect(() => {
         console.log("component was mounted!");
-    }
 
-    componentWillUnmount() {
-        console.log("i will unmount!");
-    }
+        return () => {
+            console.log("i will unmount!");
+        };
+    }, []);
 
-    render() {
-        const { task } = this.props;
-
-        return (
-            <>
-                <h1>{task.description}</h1>
-                <p>{task.isCompleted ? "Completa" : "Nao completa"}</p>
-            </>
-        );
-    }
-}
+    return (
+        <>
+            <h1>{task.description}</h1>
+            <p>{task.isCompleted ? "Completa" : "Nao completa"}</p>
+        </>
+    );
+};
 
 export default TaskItem;
+
+// import React from "react";
+
+// class TaskItem extends React.Component {
+//     componentDidMount() {
+//         console.log("component was mounted!");
+//     }
+
+//     componentWillUnmount() {
+//         console.log("i will unmount!");
+//     }
+
+//     render() {
+//         const { task } = this.props;
+
+//         return (
+//             <>
+//                 <h1>{task.description}</h1>
+//                 <p>{task.isCompleted ? "Completa" : "Nao completa"}</p>
+//             </>
+//         );
+//     }
+// }
+
+// export default TaskItem;
