@@ -9,7 +9,7 @@ import CustomInput from "./CustomInput";
 import "./AddTask.scss";
 import { LiaCloneSolid } from "react-icons/lia";
 
-const AddTask = () => {
+const AddTask = ({ fetchTasks }) => {
     const [task, setTask] = useState("");
 
     const alert = useAlert();
@@ -30,8 +30,12 @@ const AddTask = () => {
                 description: task,
                 isCompleted: false,
             });
+
+            await fetchTasks();
+
+            setTask("");
         } catch (error) {
-            console.log(error);
+            alert.error("Algo deu errado.");
         }
     };
 
