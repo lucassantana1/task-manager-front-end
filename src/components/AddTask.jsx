@@ -7,7 +7,6 @@ import CustomButton from "./CustomButton";
 import CustomInput from "./CustomInput";
 
 import "./AddTask.scss";
-import { LiaCloneSolid } from "react-icons/lia";
 
 const AddTask = ({ fetchTasks }) => {
     const [task, setTask] = useState("");
@@ -47,6 +46,7 @@ const AddTask = ({ fetchTasks }) => {
                 label="Adicionar tarefa"
                 value={task}
                 onChange={onChange}
+                onEnterPress={handleTaskAddition}
             />
             <CustomButton onClick={handleTaskAddition}>
                 <FaPlus size={14} color="#fff" />
