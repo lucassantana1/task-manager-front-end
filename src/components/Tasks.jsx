@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import axios from "axios";
 import { useAlert } from "react-alert";
 
@@ -22,6 +22,14 @@ const Tasks = () => {
         }
     };
 
+    const lastTasks = useMemo(() => {
+        return tasks.filter((task) => task.isCompleted === false);
+    }, [tasks]);
+
+    const completedTasks = useMemo(() => {
+        return tasks.filter((task) => task.isCompleted === true);
+    }, [tasks]);
+
     useEffect(() => {
         fetchTasks();
     }, []);
@@ -34,7 +42,7 @@ const Tasks = () => {
                 <h3>Últimas Tarefas</h3>
                 <AddTask fetchTasks={fetchTasks} />
                 <div className="tasks-list">
-                    {tasks
+                    {lastTasks
                         .filter((task) => task.isCompleted === false)
                         .map((lastTask) => (
                             <TaskItem
@@ -49,7 +57,7 @@ const Tasks = () => {
             <div className="completed-tasks">
                 <h3>Tarefas Concluídas</h3>
                 <div className="tasks-list">
-                    {tasks
+                    {completedTasks
                         .filter((task) => task.isCompleted)
                         .map((completedTask) => (
                             <TaskItem
