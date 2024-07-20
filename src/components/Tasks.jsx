@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { useAlert } from "react-alert";
 
 import "./Tasks.scss";
 
@@ -14,8 +15,8 @@ const Tasks = () => {
             const { data } = await axios.get("http://localhost:8000/tasks");
 
             setTasks(data);
-        } catch (error) {
-            console.log(error);
+        } catch (_error) {
+            alert.error("Nao foi possivel recuperar as tarefas.");
         }
     };
 
