@@ -22,7 +22,7 @@ const TaskItem = ({ task, fetchTasks }) => {
   const handleTaskCompletionChange = async (e) => {
     try {
       await axios.patch(`http://localhost:8000/tasks/${task._id}`, {
-        isCompleted: e.target.checked
+        isCompleted: e.target.checked,
       })
 
       await fetchTasks()
@@ -41,7 +41,8 @@ const TaskItem = ({ task, fetchTasks }) => {
             task.isCompleted
               ? 'checkbox-container-completed'
               : 'checkbox-container'
-          }>
+          }
+        >
           {task.description}
           <input
             type="checkbox"
@@ -49,9 +50,8 @@ const TaskItem = ({ task, fetchTasks }) => {
             onChange={(e) => handleTaskCompletionChange(e)}
           />
           <span
-            className={
-              task.isCompleted ? 'checkmark completed' : 'checkmark'
-            }></span>
+            className={task.isCompleted ? 'checkmark completed' : 'checkmark'}
+          ></span>
         </label>
       </div>
 

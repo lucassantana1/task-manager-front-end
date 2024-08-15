@@ -21,13 +21,13 @@ const AddTask = ({ fetchTasks }) => {
     try {
       if (task.length === 0) {
         return alert.error(
-          'A tarefa precisa de uma descricao para ser adicionada.'
+          'A tarefa precisa de uma descricao para ser adicionada.',
         )
       }
 
       await axios.post('http://localhost:8000/tasks', {
         description: task,
-        isCompleted: false
+        isCompleted: false,
       })
 
       await fetchTasks()
