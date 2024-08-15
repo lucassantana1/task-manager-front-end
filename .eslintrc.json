@@ -4,11 +4,7 @@
     "es2021": true,
     "node": true
   },
-  "extends": [
-    "standard",
-    "plugin:react/recommended",
-    "plugin:prettier/recommended"
-  ],
+  "extends": ["standard", "plugin:react/recommended", "prettier"],
   "plugins": ["react", "prettier"],
   "parserOptions": {
     "ecmaFeatures": {
@@ -18,17 +14,9 @@
     "sourceType": "module"
   },
   "rules": {
-    "prettier/prettier": [
-      "error",
-      {
-        "singleQuote": true,
-        "semi": false,
-        "endOfLine": "auto"
-      }
-    ],
+    "prettier/prettier": "error",
     "react/react-in-jsx-scope": "off",
-    "no-unused-vars": "warn",
-    "react/prop-types": "off"
+    "no-unused-vars": "warn"
   },
   "settings": {
     "react": {
